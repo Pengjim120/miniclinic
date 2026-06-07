@@ -94,17 +94,17 @@ public class AppointmentController {
         String timeSlot = request.get("timeSlot");
 
         // 查詢關聯的 Patient 與 Doctor
-        Patient patient = patientRepo.findById(chartNo).orElse(null);
-        Doctor doctor = doctorRepo.findById(doctorId).orElse(null);
+        Optional<Patient> patientOpt = patientRepo.findById(chartNo);
+        Optional<Doctor> doctorOpt = doctorRepo.findById(doctorId);
 
-        if (patient == null || doctor == null) {
+        if (patientOpt.isEmpty() || doctorOpt.isEmpty()) {
             return ResponseEntity.badRequest().build();
         }
 
         // 建立 Appointment 物件
         Appointment appt = new Appointment();
-        appt.setPatient(patient);
-        appt.setDoctor(doctor);
+        appt.setPatient(patientOpt.get());
+        appt.setDoctor(doctorOpt.get());
         appt.setApptDate(apptDate);
         appt.setTimeSlot(timeSlot);
         appt.setStatus("BOOKED");
