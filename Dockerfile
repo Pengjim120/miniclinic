@@ -1,3 +1,11 @@
+WORKDIR /app
+COPY . .
+
+# 進入 pom.xml 所在的子資料夾（請將 your-subfolder-name 替換為實際的資料夾名稱）
+WORKDIR /app/your-subfolder-name
+
+RUN mvn clean package -DskipTests
+
 # 第一階段：用 Maven 編譯出 JAR
 FROM maven:3.9-eclipse-temurin-17-alpine AS build
 WORKDIR /app
