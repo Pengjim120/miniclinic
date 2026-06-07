@@ -82,7 +82,6 @@ public class AppointmentController {
     return "appointment-result";
 }
 
-    @SuppressWarnings("null")
     @PostMapping("/api/appointments")
     public ResponseEntity<Appointment> createAppointment(
             @RequestBody Map<String, String> request) {
