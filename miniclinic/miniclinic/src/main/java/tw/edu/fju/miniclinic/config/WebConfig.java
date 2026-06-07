@@ -13,7 +13,6 @@ public class WebConfig implements WebMvcConfigurer {
     @Autowired
     private LoginRequiredInterceptor loginRequiredInterceptor;
 
-    @SuppressWarnings("null")
     @Override
     public void addInterceptors(@NonNull InterceptorRegistry registry) {
         registry.addInterceptor(loginRequiredInterceptor)

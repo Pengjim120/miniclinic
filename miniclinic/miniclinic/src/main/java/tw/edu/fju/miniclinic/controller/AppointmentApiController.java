@@ -36,7 +36,7 @@ public class AppointmentApiController {
             @RequestParam(required = false) String doctorId) {
         
         if (date != null) return appointmentRepo.findByApptDate(date);
-        if (doctorId != null) return appointmentRepo.findByDoctor_DoctorId(doctorId);
+        if (doctorId != null) return appointmentRepo.findAll();
         return appointmentRepo.findAll();
     }
     @PutMapping("/api/appointments/{apptId}/status")

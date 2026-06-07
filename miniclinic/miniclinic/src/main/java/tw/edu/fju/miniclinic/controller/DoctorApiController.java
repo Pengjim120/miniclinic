@@ -34,7 +34,6 @@ public class DoctorApiController {
 
     @GetMapping("/api/doctors/{doctorId}")
     public ResponseEntity<Doctor> getDoctor(@PathVariable String doctorId) {
-        @SuppressWarnings("null")
         Optional<Doctor> doctor = doctorRepo.findById(doctorId);
         return doctor
             .map(d -> ResponseEntity.ok(d))       // 有 → 200 OK + 資料
