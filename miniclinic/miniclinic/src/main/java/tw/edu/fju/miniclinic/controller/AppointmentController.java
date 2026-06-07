@@ -55,9 +55,7 @@ public class AppointmentController {
 	}
 
     // 步驟 1：用表單的字串 ID，從資料庫查出真正的物件
-    @SuppressWarnings("null")
     Optional<Patient> patientOpt = patientRepo.findById(form.getChartNo());
-    @SuppressWarnings("null")
     Optional<Doctor> doctorOpt = doctorRepo.findById(form.getDoctorId());
 
     // 步驟 2：驗證——找不到就回表單顯示錯誤
